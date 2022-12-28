@@ -29,11 +29,42 @@ impl TentacleFactory {
             .collect()
     }
 
-    fn is_enabled(enabled_tentacles: &HashMap<String, Vec<String>>, tentacle: &Box<dyn Tentacle>) -> bool {
+    fn is_enabled(
+        enabled_tentacles: &HashMap<String, Vec<String>>,
+        tentacle: &Box<dyn Tentacle>,
+    ) -> bool {
         enabled_tentacles.contains_key(tentacle.group().as_str())
             && enabled_tentacles
                 .get(tentacle.group().as_str())
                 .unwrap()
                 .contains(&tentacle.name())
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn should_return_enabled_tentacles() {
+        let mut enabled_tentacles: HashMap<String, Vec<String>> = HashMap::new();
+        enabled_tentacles.insert("test".to_owned(), vec!["dummy".to_owned()]);
+
+        let tentacles = TentacleFactory::build(enabled_tentacles.clone());
+
+        for tentacle in tentacles {
+            let group = enabled_tentacles.get(tentacle.group().as_str());
+            assert!(group.is_some());
+            assert!(group.unwrap().contains(&tentacle.name()))
+        }
+    }
+
+    #[test]
+    fn should_return_empty_list_when_no_tentacle_is_enabled() {
+        let enabled_tentacles: HashMap<String, Vec<String>> = HashMap::new();
+
+        let tentacles = TentacleFactory::build(enabled_tentacles.clone());
+
+        assert!(tentacles.is_empty());
     }
 }

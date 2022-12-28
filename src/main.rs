@@ -12,7 +12,7 @@ async fn func(event: LambdaEvent<Value>) -> Result<Value, Error> {
     let event = event.payload;
     let key: Key = from_value(event)?;
 
-    let kraken = Kraken {};
+    let kraken = Kraken::new();
     let destruction_results = kraken.release(key).await?;
 
     Ok(to_value(DestructionResults {
