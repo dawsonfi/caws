@@ -10,4 +10,4 @@ cdk-build: cdk-install
 	npm --prefix cdk run build
 
 deploy: release cdk-build
-	cdk deploy *-stack --profile kevin --app "node cdk/index" --require-approval never
+	cdk deploy *-stack --profile caws --app "node cdk/index" --require-approval never
