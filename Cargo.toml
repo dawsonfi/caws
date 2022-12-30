@@ -1,7 +1,11 @@
 [package]
 name = "caws"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
+description = "Chaos on AWS Library"
+license = "MIT"
+documentation = "https://docs.rs/caws"
+repository = "https://github.com/dawsonfi/caws"
 
 [dependencies]
 tokio = { version = "1.23.0", features = ["full"] }
