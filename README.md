@@ -42,7 +42,7 @@ async fn func(event: LambdaEvent<Value>) -> Result<Value, Error> {
 }
 
 ```
-* Build and package your code with: `cargo lambda build --release --x86-64 --output-format zip` (you might need to install [cargo-lambda first](https://github.com/cargo-lambda/cargo-lambda))
+* Build and package your code with: `cargo lambda build --release --x86-64 --output-format zip` (you might need to install [cargo-lambda](https://github.com/cargo-lambda/cargo-lambda) first)
 
 ### CDK
 
