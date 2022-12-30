@@ -3,12 +3,13 @@
     "description": "Caws CDK Constructs",
     "repository": "https://github.com/dawsonfi/caws",
     "license": "MIT",
-    "version": "1.0.0",
+    "version": "0.1.1",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
     "scripts": {
       "clean": "rm -rf *.js && rm -rf *.d.ts && rm -rf node_modules && rm -rf cdk.out",
       "build": "tsc",
-      "watch": "tsc -w",
-      "cdk": "cdk"
+      "watch": "tsc -w"
     },
     "devDependencies": {
       "@types/node": "^18.11.18",      
@@ -18,5 +19,8 @@
       "aws-cdk": "^2.57.0",
       "aws-cdk-lib": "^2.57.0",
       "constructs": "^10.1.202"
-    }
+    },
+    "files": [
+      "/dist"
+    ]
   }

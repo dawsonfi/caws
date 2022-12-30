@@ -1,1 +1,8 @@
 /target
+
+node_modules
+build
+.DS_Store
+dist/
+cdk.context.json
+*.zip
