@@ -42,7 +42,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Install Zig
-      run: apt-get install zig
+      run: apt-get install -y zig
     - name: Install Cargo Lambda
       run: cargo install cargo-lambda
     - name: Build Release
