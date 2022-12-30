@@ -17,7 +17,7 @@
     "dependencies": {
         "aws-cdk": "^2.57.0",
         "aws-cdk-lib": "^2.57.0",
-        "caws-constructs": "^0.1.4",        
+        "caws-constructs": "^0.1.4",
         "constructs": "^10.1.202"
     }
 }
