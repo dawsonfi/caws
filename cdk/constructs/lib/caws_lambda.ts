@@ -6,12 +6,10 @@ import { LambdaDeploymentConfig } from 'aws-cdk-lib/aws-codedeploy'
 
 export interface CawsLambdaProps {
   readonly functionName: string
-  readonly brazilPackageName: string
-  readonly deploymentConfig?: ILambdaDeploymentConfig
-  readonly runtime: Runtime
-  readonly handler: string
-  readonly timeout: Duration
-  readonly memorySize: number
+  readonly brazilPackagePath?: string
+  readonly deploymentConfig?: ILambdaDeploymentConfig  
+  readonly timeout?: Duration
+  readonly memorySize?: number
   readonly environment?: { [key: string]: string }  
 }
 
@@ -20,7 +18,9 @@ export class CawsLambda extends Function {
     super(scope, id, {
       ...props,
       code: new AssetCode('target/lambda/release/bootstrap.zip'),
-      description: `Generated on: ${new Date().toISOString()}`      
+      description: `Generated on: ${new Date().toISOString()}`,
+      runtime: Runtime.PROVIDED_AL2,
+      handler: 'doesnt.matter'
     })
 
     this.createDeploymentGroup(
