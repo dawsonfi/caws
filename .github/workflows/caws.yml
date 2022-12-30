@@ -41,6 +41,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+    - name: Install Zig
+      run: apt-get install zig
     - name: Install Cargo Lambda
       run: cargo install cargo-lambda
     - name: Build Release
