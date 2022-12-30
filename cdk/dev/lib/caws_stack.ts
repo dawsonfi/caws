@@ -5,9 +5,10 @@ export class CawsStack extends Stack {
     constructor(parent: App, name: string, props: StackProps) {
         super(parent, name, props);
 
-        new CawsLambda(this, 'caws-lambda', {
-          functionName: 'caws-lambda',
+        const id = 'caws-lambda';
+        new CawsLambda(this, id, {
+          functionName: id,
+          brazilPackagePath: 'target/lambda/caws/bootstrap.zip'
         })
    }
 }
-

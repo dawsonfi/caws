@@ -1,13 +1,14 @@
-build-zip:
-	cargo lambda build --release --arm64 --output-format zip
-
-release: build-zip
+release:
+	cargo lambda build --release --x86-64 --output-format zip
 
 cdk-install:
-	npm --prefix cdk install cdk
+	npm --prefix cdk/dev install
 
 cdk-build: cdk-install
-	npm --prefix cdk run build
+	npm --prefix cdk/dev run build
+
+bootstrap: release cdk-build
+	cdk bootstrap --app "node cdk/dev/dist/index"
 
 deploy: release cdk-build
-	cdk deploy *-stack --profile caws --app "node cdk/index" --require-approval never
+	cdk deploy *-stack --app "node cdk/dev/dist/index" --require-approval never

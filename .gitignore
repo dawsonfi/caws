@@ -6,3 +6,4 @@ build
 dist/
 cdk.context.json
 *.zip
+cdk.out/

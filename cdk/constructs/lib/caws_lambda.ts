@@ -17,7 +17,7 @@ export class CawsLambda extends Function {
   constructor(scope: Construct, id: string, props: CawsLambdaProps) {
     super(scope, id, {
       ...props,
-      code: new AssetCode('target/lambda/release/bootstrap.zip'),
+      code: new AssetCode(props.brazilPackagePath?? 'target/lambda/release/bootstrap.zip'),
       description: `Generated on: ${new Date().toISOString()}`,
       runtime: Runtime.PROVIDED_AL2,
       handler: 'doesnt.matter'
