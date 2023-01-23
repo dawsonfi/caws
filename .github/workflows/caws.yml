@@ -46,6 +46,8 @@ jobs:
     needs: release-lib
     environment: crates
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
     - uses: actions/checkout@v3
     - name: Install Zig
@@ -54,8 +56,3 @@ jobs:
       run: cargo install cargo-lambda
     - name: Build Release
       run: cargo lambda build --release --x86-64 --output-format zip
-    - name: Publish Zip Release
-      uses: ncipollo/release-action@v1
-      with:
-        artifacts: "target/lambda/caws/bootstrap.zip"
-        token: ${{ secrets.GITHUB_TOKEN }}
